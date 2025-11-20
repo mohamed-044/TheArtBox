@@ -1,4 +1,4 @@
-<?php require 'header.php'; ?>
+<?php require_once(__DIR__ . '/header.php'); ?>
 
 <form action="traitement.php" method="POST">
     <div class="champ-formulaire">

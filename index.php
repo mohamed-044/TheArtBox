@@ -1,6 +1,8 @@
 <?php
-    require 'header.php';
-    require 'oeuvres.php';
+    require_once(__DIR__ . '/header.php');
+    require_once(__DIR__ . '/oeuvres.php');
+    require_once(__DIR__ . '/bdd.php');
+    require_once(__DIR__ . '/bdd_connect.php');
 ?>
 <div id="liste-oeuvres">
     <?php foreach($oeuvres as $oeuvre): ?>
