@@ -2,6 +2,25 @@
 require_once(__DIR__ . '/header.php');
 require_once(__DIR__ . '/bdd_connect.php');
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    header('Location: index.php');
+    exit;
+}
+
+$id = intval($_GET['id']);
+
+$oeuvresStatement = $mysqlClient->prepare('SELECT * FROM oeuvres WHERE id = ?');
+$oeuvresStatement->execute([$id]);
+
+$oeuvre = $oeuvresStatement->fetch(PDO::FETCH_ASSOC);
+
+if (!$oeuvre) {
+    header('Location: index.php');
+    exit;
+}
 ?>
 
 <article id="detail-oeuvre">
@@ -17,5 +36,4 @@ require_once(__DIR__ . '/bdd_connect.php');
     </div>
 </article>
 
-<?php require_once(__DIR__ . 'footer.php'); ?>
-
+<?php require_once(__DIR__ . '/footer.php'); ?>
