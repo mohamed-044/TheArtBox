@@ -1,12 +1,17 @@
 <?php
+require_once(__DIR__ . '/bdd_connect.php');
+
 $postData = $_POST;
+
 if (
     !isset($postData['titre']) ||
     !isset($postData['artiste']) ||
     !isset($postData['image']) ||
-    !isset($postData['description']) 
+    !isset($postData['description']) ||
+    strlen($postData['description']) < 3 ||
+    !preg_match('/^https:\/\/.+/', $postData['image'])
 ) {
-    echo('Il faut un titre, un artiste, une image et une description pour soumettre le formulaire.');
+    echo('Il faut un titre, un artiste, une image avec url valide et une description pour soumettre le formulaire.');
     return;
 }
 $titre = $_POST['titre'];
