@@ -9,7 +9,11 @@ if (
     !isset($postData['image']) ||
     !isset($postData['description']) ||
     strlen($postData['description']) < 3 ||
-    !preg_match('/^https:\/\/.+/', $postData['image'])
+    !preg_match('/^https:\/\/.+/', $postData['image']) ||
+    empty($_POST['titre'])  || 
+    empty($_POST['artiste'])  || 
+    empty($_POST['description'])    || 
+    empty($_POST['image'])
 ) {
     echo('Il faut un titre, un artiste, une image avec url valide et une description pour soumettre le formulaire.');
     return;
